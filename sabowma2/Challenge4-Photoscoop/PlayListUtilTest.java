@@ -4,7 +4,7 @@ import java.util.Arrays;
 import junit.framework.TestCase;
 /* You do not need to modify this file, however it may be useful
 * to read how each test works.
-* @author angrave
+* @author sabowma2
 *
 */
 public class PlayListUtilTest extends TestCase {
