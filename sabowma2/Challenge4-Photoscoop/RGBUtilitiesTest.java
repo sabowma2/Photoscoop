@@ -5,7 +5,7 @@ import junit.framework.TestCase;
  * Tests RGBUtilities.
  * You do not need to modify this file, however it may be useful
  * to read how each test works.
- * @author angrave
+ * @author sabowma2
  *
  */
 public class RGBUtilitiesTest extends TestCase {

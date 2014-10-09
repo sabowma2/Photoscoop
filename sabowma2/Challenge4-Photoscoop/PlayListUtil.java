@@ -1,7 +1,7 @@
 //UIUC CS125 FALL 2014 MP. File: PlayListUtil.java, CS125 Project: Challenge4-Photoscoop, Version: 2014-10-05T15:45:48-0500.087714731
 /**
  * Add you netid here..
- * @author angrave
+ * @author sabowma2
  *
  */
 public class PlayListUtil {
@@ -14,7 +14,12 @@ public class PlayListUtil {
 	 */
 	public static void list(String[] list, int maximum) {
 		int i;
-		for ( i = 0      ; i    <=    maximum; ); {      TextIO.putln(   ""  + i + ". " + list[i]);}
+		int count = 1;
+		for ( i = 0; i <= maximum; i++ ); 
+		{      
+			TextIO.putln(count+". " + list[i]);
+			count++;
+		}
 	}
 
 	/**
@@ -25,6 +30,18 @@ public class PlayListUtil {
 	 * @return a new list with the title prepended or appended to the original list
 	 */
 	public static String[] add(String[] list, String title, boolean prepend) {
+		if(prepend)
+		{
+			for(int i=0;i<=list.length;i++)
+			{
+				list[i] = title;
+			}
+				
+			}
+		else if (!prepend)
+		{
+			list[list.length]= title;
+		}
 		return list;
 	}
 	/**
@@ -34,6 +51,10 @@ public class PlayListUtil {
 	 * @return a new list with the String at position 'index', absent.
 	 */
 	public static String[] discard(String[] list, int index) {
+		for(int i =0; i<list.length; i++)
+		{
+			list[i]=list[i+1];
+		}
 		return list;
 	}
 

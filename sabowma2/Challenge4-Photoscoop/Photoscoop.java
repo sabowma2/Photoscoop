@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  * modify this class. You are welcome to peruse it to see 'how-it-works' or
  * re-use it for your own purposes.
  * 
- * @author angrave
+ * @author sabowma2
  */
 public class Photoscoop {
 

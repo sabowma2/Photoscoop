@@ -1,10 +1,9 @@
 //UIUC CS125 FALL 2014 MP. File: PixelEffects.java, CS125 Project: Challenge4-Photoscoop, Version: 2014-10-05T15:45:48-0500.087714731
 
-/* A class to implement the various pixel effects.
+/** A class to implement the various pixel effects.
  *
- * Todo: Put your netid (i.e. username) in the line below
- * 
- * @author put-your-netid-here
+ * Todo: Put your netid (i.e. username) in the line below * 
+ * @author sabowma2
  */
 public class PixelEffects {
 
