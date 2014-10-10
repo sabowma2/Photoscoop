@@ -31,6 +31,42 @@ public class Effects {
 		// hint: for some commands the string is slightly different than the method name
 		// hint: remember to use string.equals not == to compare strings
 		// This message and the exception should not occur if you match all possible command strings
+		if(cmd.equals("half"))
+		{
+			PixelEffects.half(source);
+		}
+		else if(cmd.equals("rotate"))
+		{
+			PixelEffects.rotateLeft(source);
+		}
+		else if(cmd.equals("flip"))
+		{
+			PixelEffects.flip(source);
+		}
+		else if(cmd.equals("mirror"))
+		{
+			PixelEffects.mirror(source);
+		}
+		else if(cmd.equals("redeye"))
+		{
+			PixelEffects.redeye(source, background);
+		}
+		else if(cmd.equals("funky"))
+		{
+			PixelEffects.funky(source, background);
+		}
+		else if(cmd.equals("resize"))
+		{
+			PixelEffects.resize(source, background);
+		}		
+		else if(cmd.equals("merge"))
+		{
+			PixelEffects.merge(source, background);
+		}
+		else if(cmd.equals("key"))
+		{
+			PixelEffects.chromaKey(source, background);
+		}		
 		System.out.println("Todo: Implement Effects.process("+cmd+")");
 		throw new RuntimeException("Unknown command:"+cmd);
 	}// end method

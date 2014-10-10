@@ -93,8 +93,10 @@ public class PixelEffectsTest extends TestCase {
 	public void testResizeDoubleSize() {
 		int[][] source = getTestSourceArray(); // 3 x 4 -> 6 x 8
 		int w = 6, h = 8;
-		int[][] expected = { { 0, 0, 1, 1, 2, 2, 3, 3 },
-				{ 0, 0, 1, 1, 2, 2, 3, 3 }, { 10, 10, 11, 11, 12, 12, 13, 13 },
+		int[][] expected = 
+			       { { 0, 0, 1, 1, 2, 2, 3, 3 },
+				     { 0, 0, 1, 1, 2, 2, 3, 3 }, 
+				{ 10, 10, 11, 11, 12, 12, 13, 13 },
 				{ 10, 10, 11, 11, 12, 12, 13, 13 },
 				{ 20, 20, 21, 21, 22, 22, 23, 23 },
 				{ 20, 20, 21, 21, 22, 22, 23, 23 } };
