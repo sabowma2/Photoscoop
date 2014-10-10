@@ -53,12 +53,18 @@ public class PixelEffects {
 
 	/** Flip the image vertically */
 	public static int[][] flip(int[][] source) {
-		return null;// Fix Me
+		 for(int i = 0; i < (source.length / 2); i++) {
+		        int[] temp = source[i];
+		        source[i] = source[source.length - i - 1];
+		        source[source.length - i - 1] = temp;
+		    }
+		 
+		 return source;
 	}
 
 	/** Reverse the image horizontally */
 	public static int[][] mirror(int[][] source) {
-		return null;// Fix Me
+		return null;
 	}
 
 	/** Rotate the image */

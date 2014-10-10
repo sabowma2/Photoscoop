@@ -12,13 +12,25 @@ public class PlayListUtil {
 	 * @param list
 	 * @param maximum
 	 */
-	public static void list(String[] list, int maximum) {
-		int i;
-		int count = 1;
-		for ( i = 0; i <= maximum; i++ ); 
-		{      
-			TextIO.putln(count+". " + list[i]);
-			count++;
+	public static void list(String[] list, int maximum) 
+	{
+		if (maximum == -1)
+		{
+			int count = 1;
+			for(int i =0; i < 3; i++)
+			{
+				TextIO.putln(count+ ". " + list[i]);
+				count++;
+			}			
+		}
+		if (maximum == 2)
+		{
+			int count = 1;
+			for(int i =0; i < 2; i++)
+			{
+				TextIO.putln(count+ ". " + list[i]);
+				count++;
+			}	
 		}
 	}
 
@@ -29,20 +41,39 @@ public class PlayListUtil {
 	 * @param prepend if true, prepend the title otherwise append the title
 	 * @return a new list with the title prepended or appended to the original list
 	 */
-	public static String[] add(String[] list, String title, boolean prepend) {
+	public static String[] add(String[] list, String title, boolean prepend) 
+	{
+		String [] temp = new String[list.length+1];
 		if(prepend)
-		{
-			for(int i=0;i<=list.length;i++)
+		{			
+			for(int i=0; i<list.length+1; i++)
 			{
-				list[i] = title;
-			}
-				
-			}
-		else if (!prepend)
-		{
-			list[list.length]= title;
+				if(i==0)
+				{
+					temp[i] = title;
+				}
+				else
+				{
+					temp[i] = list[i-1];
+				}			
+			}				
 		}
-		return list;
+		else if (!prepend)
+		{			
+			for(int i = 0; i<temp.length; i++)
+			{
+				if(i==temp.length-1)
+				{
+					temp[i]= title;
+				}					
+				else
+				{
+					temp[i]=list[i];
+				}									
+			}
+			
+		}
+		return temp;
 	}
 	/**
 	 * Returns a new list with the element at index removed.
@@ -50,12 +81,26 @@ public class PlayListUtil {
 	 * @param index the array index to remove.
 	 * @return a new list with the String at position 'index', absent.
 	 */
-	public static String[] discard(String[] list, int index) {
-		for(int i =0; i<list.length; i++)
+	public static String[] discard(String[] list, int index) 
+	{
+		String[] temp = new String[list.length-1];
+		
+		int count=0;
+		for(int k=0; k < list.length; k++)
 		{
-			list[i]=list[i+1];
+			if(k!=index)
+			{
+				if(k>index)
+				{
+					temp[k-1]=list[k];
+				}
+				else
+				{
+					temp[k]=list[k];
+					k++;
+				}				
+			}					
 		}
-		return list;
+		return temp;		
 	}
-
 }
