@@ -39,7 +39,7 @@ public class RGBUtilities {
 	 * @return a single integer representation the rgb color (8 bits per component) rrggbb
 	 */
 	static int toRGB(int r, int g, int b) {
-		return (r << 16) | (g<<8) | b; // FIX THIS
+		return (r << 16) | (g<<8) | b; 
 	}
 
 }
