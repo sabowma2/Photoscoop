@@ -139,7 +139,25 @@ public class PixelEffects {
 		// when reading the background
 		// (e.g. so the far right pixel of the source is merged with the
 		// far-right pixel of the background).
-		return sourceA;
+		int width = sourceA.length, height = sourceA[0].length;
+		int[][] result = new int[width][height];
+		for (int i = 0; i < width; i++)
+			for (int j = 0; j < height; j++) {
+				int rgb = sourceA[i][j];
+				int rgb2 = sourceB[i][j];
+				int red = RGBUtilities.toRed(rgb);
+				int red2 = RGBUtilities.toRed(rgb2);
+				int green = RGBUtilities.toGreen(rgb);
+				int green2 = RGBUtilities.toGreen(rgb2);
+				int blue = RGBUtilities.toBlue(rgb);
+				int blue2 = RGBUtilities.toBlue(rgb2);
+				int combRed = (red+red2)/2;
+				int combGreen = (green+green2)/2;
+				int combBlue = (blue+blue2)/2;
+				result[i][j] = RGBUtilities.toRGB(combRed, combGreen, combBlue);
+			}
+
+		return result;
 	}
 
 	/**
