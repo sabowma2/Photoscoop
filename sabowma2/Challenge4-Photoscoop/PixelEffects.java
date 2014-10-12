@@ -37,7 +37,7 @@ public class PixelEffects {
 	 * @param newHeight
 	 * @return
 	 */
-	public static int[][] resize(int[][] source, int newWidth, int newHeight) {
+	public static int[][] resize(int[][] source, int newWidth, int newHeight) { //WORKING
 		
 		// Hints: Use two nested for loops between 0... newWidth-1 and 0.. newHeight-1 inclusive.
 		// Hint: You can just use relative proportion to calculate the x (or y coordinate)  in the original image.
@@ -45,13 +45,13 @@ public class PixelEffects {
 		
 		int[][] result = new int[newWidth][newHeight];
 		double prop = ((double) newWidth) / source.length;
+		double prop2 = ((double) newHeight) / source[0].length;
 		    for(int i=0; i<newWidth; i++){
 		    	for(int j=0; j<newHeight; j++)
 		    	{
-		    		result[i][j]=source[(int)(i/prop)][(int)(j/prop)];
+		    		result[i][j]=source[(int)(i/prop)][(int)(j/prop2)];
 		        }
-		    }
-		    
+		    }		    
 		return result;		        
 	}
 
@@ -59,7 +59,7 @@ public class PixelEffects {
 	 * Half the size of the image. This method should be just one line! Just
 	 * delegate the work to resize()!
 	 */
-	public static int[][] half(int[][] source) { //working depending on resize
+	public static int[][] half(int[][] source) { //WORKING
 		return resize(source, source.length/2, (source[0].length)/2);
 	}
 	
@@ -73,24 +73,64 @@ public class PixelEffects {
 	 * @param reference
 	 * @return the resized image
 	 */
-	public static int[][] resize(int[][] source, int[][] reference) { //working depending on resize
+	public static int[][] resize(int[][] source, int[][] reference) { //WORKING
 		return resize(source, reference.length, reference[0].length); 
 	}
 
 	/** Flip the image vertically */
-	public static int[][] flip(int[][] source) 
+	public static int[][] flip(int[][] source) //WORKING
 	{
-		return null;
+		int srcW = source.length;
+		int srcH = source[0].length;
+		int tgtW= srcW;
+		int tgtH = srcH;
+		int [][]result = new int[tgtW][tgtH];
+		for(int tgtX=0; tgtX<tgtW; tgtX++){
+			for(int tgtY=0; tgtY<tgtH; tgtY++)
+			{
+				int srcY = tgtH-tgtY-1;
+				int srcX = tgtX;
+				result[tgtX][tgtY] = source[srcX][srcY];				
+			}			
+		}		
+		return result;
 	}
 
 	/** Reverse the image horizontally */
-	public static int[][] mirror(int[][] source) {
-		return null;
+	public static int[][] mirror(int[][] source) { //WORKING!
+		
+		int srcW = source.length;
+		int srcH = source[0].length;
+		int tgtW= srcW;
+		int tgtH = srcH;
+		int [][]result = new int[tgtW][tgtH];
+		for(int tgtX=0; tgtX<tgtW; tgtX++){
+			for(int tgtY=0; tgtY<tgtH; tgtY++)
+			{
+				int srcY = tgtY;
+				int srcX = tgtW-tgtX-1;
+				result[tgtX][tgtY] = source[srcX][srcY];				
+			}			
+		}		
+		return result;
 	}
 
 	/** Rotate the image */
 	public static int[][] rotateLeft(int[][] source) {
-		return null;
+		int srcW = source.length;
+		int srcH = source[0].length;
+		int tgtW= srcH;
+		int tgtH = srcW;
+		int [][]result = new int[tgtW][tgtH];
+		for(int tgtX=0; tgtX<tgtW; tgtX++){
+			for(int tgtY=0; tgtY<tgtH; tgtY++)
+			{				
+				int srcX = tgtH-tgtY-1;
+				int srcY = tgtX; // 2 - 2
+				result[tgtX][tgtY] = source[srcX][srcY];				
+			}			
+		}		
+		return result;
 	}
 
 	/** Merge the red,blue,green components from two images */
@@ -114,7 +154,7 @@ public class PixelEffects {
 	}
 
 	/** Removes "redeye" caused by a camera flash. sourceB is not used */
-	public static int[][] redeye(int[][] source, int[][] sourceB) { //working
+	public static int[][] redeye(int[][] source, int[][] sourceB) { //WORKING
 
 		int width = source.length, height = source[0].length;
 		int[][] result = new int[width][height];
@@ -133,26 +173,26 @@ public class PixelEffects {
 	}
 
 	/* Upto you! do something fun to the image */
-	public static int[][] funky(int[][] source, int[][] sourceB) { //Currently just redeye copied
+	public static int[][] funky(int[][] source, int[][] sourceB) { //WORKING kind of hehe
 		// You need to invent your own image effect
 		// Minimum boring requirements to pass autograder:
 		
 		// Does not ask for any user input and returns a new 2D array
 		// Todo: remove this return null
 		
-		int width = source.length, height = source[0].length;
-		int[][] result = new int[width][height];
-		for (int i = 0; i < width; i++)
-			for (int j = 0; j < height; j++) {
-				int rgb = source[i][j];
-				int red = RGBUtilities.toRed(rgb);
-				int green = RGBUtilities.toGreen(rgb);
-				int blue = RGBUtilities.toBlue(rgb);
-				if (red > 4 * Math.max(green, blue) && red > 64)
-					red = green = blue = 0;
-				result[i][j] = RGBUtilities.toRGB(red, green, blue);
-			}
-
+		int srcW = source.length;
+		int srcH = source[0].length;
+		int tgtW= srcH;
+		int tgtH = srcW;
+		int [][]result = new int[tgtW][tgtH];
+		for(int tgtX=0; tgtX<tgtW; tgtX++){
+			for(int tgtY=0; tgtY<tgtH; tgtY++)
+			{				
+				int srcX = tgtH-tgtY-1;
+				int srcY = tgtX; // 2 - 2
+				result[tgtX][tgtY] = source[srcX][srcY];				
+			}			
+		}		
 		return result;
 	}
 }

@@ -116,7 +116,9 @@ public class PixelEffectsTest extends TestCase {
 
 	public void testMirror() {
 		int[][] source = getTestSourceArray();
-		int[][] expected = { { 20, 21, 22, 23 }, { 10, 11, 12, 13 },
+		int[][] expected = { 
+				{ 20, 21, 22, 23 }, 
+				{ 10, 11, 12, 13 },
 				{ 0, 1, 2, 3 } };
 		int[][] actual = PixelEffects.mirror(source);
 		assertEntriesEqual(expected, actual);
