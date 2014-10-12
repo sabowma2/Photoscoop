@@ -85,7 +85,6 @@ public class PlayListUtil {
 	{
 		String[] temp = new String[list.length-1];
 		
-		int count=0;
 		for(int k=0; k < list.length; k++)
 		{
 			if(k!=index)
