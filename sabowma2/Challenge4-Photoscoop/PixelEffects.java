@@ -73,7 +73,7 @@ public class PixelEffects {
 	 * @param reference
 	 * @return the resized image
 	 */
-	public static int[][] resize(int[][] source, int[][] reference) { //WORKING
+	public static int[][] resize(int[][] source, int[][] reference) { //WORKING //A --> B
 		return resize(source, reference.length, reference[0].length); 
 	}
 
@@ -168,7 +168,33 @@ public class PixelEffects {
 		// If the image has a different size than the background use the
 		// resize() method
 		// create an image the same as the background size.
-		return foreImage;
+		int rgb2, green2, blue2, red2;
+		resize(backImage, foreImage);
+		//resize(foreImage, backImage);
+		int width = foreImage.length, height = foreImage[0].length;
+		int[][] result = new int[width][height];
+		for (int i = 0; i < width; i++){
+			for (int j = 0; j < height; j++) {
+				int rgb = foreImage[i][j];
+				int red = RGBUtilities.toRed(rgb);
+				int green = RGBUtilities.toGreen(rgb);
+				int blue = RGBUtilities.toBlue(rgb);
+				if (green > 4 * Math.max(red, blue) && green > 64)
+				{
+					rgb2 = backImage[i][j];
+					red2 = RGBUtilities.toRed(rgb2);
+					green2 = RGBUtilities.toGreen(rgb2);
+					blue2 = RGBUtilities.toBlue(rgb2);
+					
+					result[i][j] = RGBUtilities.toRGB(red2, green2, blue2);
+				}		
+				else
+				{
+					result[i][j]=foreImage[i][j];
+				}
+			}
+		}
+		return result;
 	}
 
 	/** Removes "redeye" caused by a camera flash. sourceB is not used */
