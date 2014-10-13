@@ -33,39 +33,39 @@ public class Effects {
 		// This message and the exception should not occur if you match all possible command strings
 		if(cmd.equals("half"))
 		{
-			PixelEffects.half(source);
+			return PixelEffects.half(source);
 		}
 		else if(cmd.equals("rotate"))
 		{
-			PixelEffects.rotateLeft(source);
+			return PixelEffects.rotateLeft(source);
 		}
 		else if(cmd.equals("flip"))
 		{
-			PixelEffects.flip(source);
+			return PixelEffects.flip(source);
 		}
 		else if(cmd.equals("mirror"))
 		{
-			PixelEffects.mirror(source);
+			return PixelEffects.mirror(source);
 		}
 		else if(cmd.equals("redeye"))
 		{
-			PixelEffects.redeye(source, background);
+			return PixelEffects.redeye(source, background);
 		}
 		else if(cmd.equals("funky"))
 		{
-			PixelEffects.funky(source, background);
+			return PixelEffects.funky(source, background);
 		}
 		else if(cmd.equals("resize"))
 		{
-			PixelEffects.resize(source, background);
+			return PixelEffects.resize(source, background);
 		}		
 		else if(cmd.equals("merge"))
 		{
-			PixelEffects.merge(source, background);
+			return PixelEffects.merge(source, background);
 		}
 		else if(cmd.equals("key"))
 		{
-			PixelEffects.chromaKey(source, background);
+			return PixelEffects.chromaKey(source, background);
 		}		
 		System.out.println("Todo: Implement Effects.process("+cmd+")");
 		throw new RuntimeException("Unknown command:"+cmd);
