@@ -24,7 +24,7 @@
  * 
  * TL;DR good.
  * 
- * @author angrave
+ * @author sabowma2
  *
  */
 public class Stenography {
@@ -69,9 +69,22 @@ public class Stenography {
 
 		int[][] result = new int[width][height];
 		
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+		
+		int rgb = source[i][j]; 
+		int red = RGBUtilities.toRed(rgb);
+		int green = RGBUtilities.toGreen(rgb);
+		int blue = RGBUtilities.toBlue(rgb);
+		
+		red = (red & 0x0f) << 4;
+		blue = (blue & 0x0f) << 4;
+		green =(green & 0x0f) << 4;
+		result[i][j] = RGBUtilities.toRGB(red, green, blue);
+		
 		/* REDACTED */
 		
-		
+		}}
 		
 		
 		
